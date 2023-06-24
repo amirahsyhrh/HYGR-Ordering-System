@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang = "en"> 
+<!-- Basic -->
+
+<head>
+
+	<meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title> Mulut Cafe </title>  
+    <meta name = "keywords" content = "">
+    <meta name = "description" content = "">
+    <meta name = "author" content = "">
+
+    <!-- Site Icons -->
+    <link rel = "shortcut icon" href = "images/favicon.ico" type = "image/x-icon">
+    <link rel = "apple-touch-icon" href = "images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel = "stylesheet" href = "css/style.css">    
+    <!-- Responsive CSS -->
+    <link rel = "stylesheet" href = "css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel = "stylesheet" href = "css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<script type = "text/javascript">
+function validate()
+{
+if (document.Form1.menu_category.value =="")
+	{
+		alert ("Please Select Category!");
+		document.Form1.menu_category.focus();
+		return false;
+	}
+
+return (true);
+
+}
+
+
+</script>
+<style type = "text/css">
+
+input[type=text],input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 3px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: black;
+}
+
+body
+{
+	color: black;
+}
+table
+{
+	font-size: 20px;
+}
+
+select
+{
+	font-size: 15px;
+}
+button
+{
+	background:#d0a772;
+	border:1px solid #d0a772;
+	color:#ffffff;
+	margin:10px 0px;
+	padding:10px;
+	width: 14%;
+	border-radius: 5px;
+	color: whitesmoke;
+	font-size:18px;
+	color: black;
+}
+ 
+button:hover
+{
+	background:#f5d4a9;
+	border:1px solid #f5d4a9;
+}
+
+</style>
+
+<body>
+
+	<!-- Start header -->
+	<header class = "top-navbar">
+		<nav class = "navbar navbar-expand-lg navbar-light bg-light">
+			<div class = "container">
+				<a href = "index.html">
+					<img width = "25%" src = "images/groceries/1.jpg" alt = "" />
+				</a>
+				<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbars-rs-food" aria-controls = "navbars-rs-food" aria-expanded = "false" aria-label = "Toggle navigation">
+				  <span class = "navbar-toggler-icon"> </span>
+				</button>
+				<div class = "collapse navbar-collapse" id="navbars-rs-food">
+					<ul class = "navbar-nav ml-auto">
+						<li class="nav-item"> <a class = "nav-link" href = "order.php"> Dashboard</a> </li>
+						<li class = "nav-item"> <a class = "nav-link" href = "listMenu.php"> Product List </a> </li>
+						<li class = "nav-item active"> <a class = "nav-link" href = "addMenu.php"> Product Menu </a> </li>
+						<li class="nav-item"><a class="nav-link" href="../index.php"> Logout </a></li>
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	<br><br><br><br><br><br>
+			<div class = "row">
+				<div class = "col-lg-12">
+					<div class = "heading-title text-center">
+						<h2> Add New Product </h2>
+					</div>
+				</div>
+			</div>
+					<form name = "Form1" action = "addMenudetails.php" method = "POST" onSubmit="return(validate())">
+						<center>
+						<table width="90%">
+							<tr>
+								<td align = "center" width = "20%" height = "90px"> <b> Product Name </b> </td>
+								<td width = "">
+									<div>
+										<input type = "text" class = "form-control" name = "menu_name" placeholder = "Product Name" required data-error = "Please enter product name">
+									</div>
+								</td>
+								<td align = "center" width = "20%"> <b> Product Price </b> </td>
+								<td>
+									<input type = "text" placeholder = "Product Price" class = "form-control" name = "menu_price" required data-error = "Please enter product price">
+								</td>
+							</tr>
+
+							<tr>
+								<td align = "center" width = "20%" height = "90px"> <b> Category </b> </td>
+								<td>
+									<div>
+										<select name = "menu_category">
+											<option disabled selected value=""> Category </option>
+											<option value = "Food"> Food </option>
+											<option value = "Beverage"> Beverage </option>
+											<option value = "Dessert"> Dessert </option>
+										</select>
+									</div> 
+								</td>
+								<td align = "center" > <b> Product Details </b> </td>
+								<td>
+									<input type = "text" placeholder = "Product Details" class = "form-control" name = "menu_details" required data-erro r= "Please enter product details">
+								</td>
+							</tr>
+						</table>
+						<br>
+						<div class="field-container">
+							<button type="submit" name="submit"> <b> Add Product </b> </button>
+							<button type="reset" name="submit"> <b> Cancel </b> </button>
+						</div>
+
+						</center>
+
+						<br>
+
+					</form>
+
+	<!-- End Contact -->
+	<br>
+	
+	
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;"> &uarr; </a>
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"> </script>
+	<script src="js/popper.min.js"> </script>
+	<script src="js/bootstrap.min.js"> </script>
+
+    <!-- ALL PLUGINS -->
+	<script src="js/jquery.superslides.min.js"> </script>
+	<script src="js/images-loded.min.js"> </script>
+	<script src="js/isotope.min.js"> </script>
+	<script src="js/baguetteBox.min.js"> </script>
+	<script src="js/jquery.mapify.js"> </script>
+	<script src="js/form-validator.min.js"> </script>
+    <script src="js/contact-form-script.js"> </script>
+    <script src="js/custom.js"> </script>
+	
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+<!-- Basic -->
+
+<head>
+
+	<meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title> Pasar Mini Muzhar </title>  
+    <meta name = "keywords" content = "">
+    <meta name = "description" content = "">
+    <meta name = "author" content = "">
+
+    <!-- Site Icons -->
+    <link rel = "shortcut icon" href = "images/favicon.ico" type = "image/x-icon">
+    <link rel = "apple-touch-icon" href = "images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel = "stylesheet" href = "css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel = "stylesheet" href = "css/style.css">    
+    <!-- Responsive CSS -->
+    <link rel = "stylesheet" href = "css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel = "stylesheet" href = "css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<style type="text/css">
+	tr,td,th
+{
+	color: black;
+}
+tr:nth-child(even)
+{
+	background-color: #f2f2f2
+}
+th
+{
+	font-size: 18px;
+}
+td
+{
+	font-size: 17px;
+}
+</style>
+<body>
+	<!-- Start header -->
+	<header class = "top-navbar">
+		<nav class = "navbar navbar-expand-lg navbar-light bg-light">
+			<div class = "container">
+				<a href = "index.html">
+					<img width = "25%" src = "images/logoo.png" alt = "" />
+				</a>
+				<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class = "navbar-toggler-icon"> </span>
+				</button>
+				<div class = "collapse navbar-collapse" id = "navbars-rs-food">
+					<ul class = "navbar-nav ml-auto">
+						<li class = "nav-item active"\> <a class = "nav-link" href = "homepage.php"> Dashboard </a> </li>
+						<li class = "nav-item"><a class ="nav-link" href = "listMenu.php"> Menu List</a> </li>
+						<li class = "nav-item"><a class = "nav-link" href = "addMenu.php"> Add Menu</a> </li>
+						<li class="nav-item"><a class="nav-link" href="../index.php">Logout</a></li>
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	<br><br><br>
+	<!-- Start Contact -->
+	<div class = "contact-box">
+		<div class = "container">
+			<div class = "row">
+				<div class = "col-lg-12">
+					<div class = "heading-title text-center">
+						<h2> Track Order </h2>
+					</div>
+				</div>
+			</div>
+
+		</div>
+				<table align="center" border = "1" width = "95%">
+					<tr align = "center" bgcolor = "#f5d4a9">
+						<th width="5%">ID </th>
+						<th width = "16%"> Order Details(quantity) </th>
+						<th width = "10%"> Total Payment</th>
+						<th width = "15%"> Full Name </th>
+						<th width = "20%" height = "60 px"> Address </th>
+						<th width = "10%"> Phone Number </th>
+						<th> Email </th>
+						<th> Notes </th>
+					</tr>
+					<?php
+					// Connection to the server and datbase
+					$dbc = mysqli_connect ("localhost","root","","isptest");
+					if (mysqli_connect_errno())
+					{
+						echo "Failed to connect to MySQL: ".mysqli_connect_error();
+					}
+						$sql = "select * from `order` ORDER BY order_id DESC";
+						$result = mysqli_query($dbc, $sql);
+						while($row = mysqli_fetch_assoc($result))
+					{
+						?>
+							<tr align="center">
+								<td height="80px"><?php echo $row["order_id"]; ?></td>
+								<td>
+									<?php echo $row["order_details"]; ?>
+								</td>
+								<td>RM <?php echo $row["order_totalpayment"]; ?></td>
+								<td><?php echo $row["order_fullname"]; ?></td>
+								<td><?php echo $row["order_address"]; ?></td>
+								<td><?php echo $row["order_phonenumber"]; ?></td>
+								<td><?php echo $row["order_email"]; ?></td>
+								<td><?php echo $row["order_notes"]; ?></td>
+							</tr>
+
+						<?php
+					}	
+					?>
+				</table>
+	</div>
+
+	<!-- End Contact -->
+	
+	<!-- Start Contact info -->
+	<div class="contact-imfo-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<i class="fa fa-volume-control-phone"></i>
+					<div class="overflow-hidden">
+						<h4>Phone</h4>
+						<p class="lead">
+							017-686-3973
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-envelope"></i>
+					<div class="overflow-hidden">
+						<h4>Email</h4>
+						<p class="lead">
+							MulutCafe@gmail.com
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-map-marker"></i>
+					<div class="overflow-hidden">
+						<h4>Location</h4>
+						<p class="lead">
+							28, Jalan Bangi Avenue 6/4, Taman Bangi Avenue, 43000 Kajang, Selangor
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact info -->
+	
+	
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/jquery.mapify.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

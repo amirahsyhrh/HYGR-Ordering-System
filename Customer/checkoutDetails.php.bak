@@ -1,0 +1,50 @@
+	<?php
+		// assign data from customer form into variable
+		$cname=$_POST['cust_name'];
+		$caddress=$_POST['cust_address'];
+		$cphone = $_POST['cust_phoneno'];
+		$cemail = $_POST['cust_email'];
+		$cnotes = $_POST['cust_notes'];
+		$cdetails = "";
+		$ctotalprice = 0;
+
+		include "db_connect.php";
+		$sqll = "select * from cart";
+		$result = mysqli_query($connect, $sqll);
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$cdetails .= $row["cart_mname"] . "(" . $row["cart_quantity"] . ")" . ", ";
+			$ctotalprice += $row["cart_totalprice"];
+		}
+
+		// Connection to the server and datbase
+	
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: ".mysqli_connect_error();
+		}
+
+		// SQL statement to insert data from form into table customer
+		$sql="INSERT INTO `order`(order_fullname, order_address, order_phonenumber, order_email, order_notes) VALUES ('$cname','$caddress', '$cphone', '$cemail', '$cnotes', '$cdetails', '$ctotalprice')";
+		$results= mysqli_query($connect,$sql);
+
+		if ($results)
+		{
+			mysqli_commit($connect);
+			//display message box Record Been Added
+
+			print '<script>alert("Order Successful");</script>';
+			//go to frmcustomer.php page
+			print '<script>window.location.assign("delete.php");</script>';
+
+		}
+
+		else
+		{ 
+			mysqli_rollback($dbc);
+			//display error message box
+			print '<script>alert("Order Unsuccessful");</script>';
+			//go to frmcustomer.php page
+			print '<script>window.location.assign("checkout.php");</script>';
+		}
+	?>
